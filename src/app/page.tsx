@@ -22,10 +22,10 @@ const colorsData: ColorInfo[] = [
 ];
 
 const cornerClasses = [
-  'top-4 left-4 md:top-8 md:left-8',
-  'top-4 right-4 md:top-8 md:right-8',
-  'bottom-4 left-4 md:bottom-8 md:left-8',
-  'bottom-4 right-4 md:bottom-8 md:right-8',
+  'top-4 left-4 sm:top-6 sm:left-6 md:top-8 md:left-8',
+  'top-4 right-4 sm:top-6 sm:right-6 md:top-8 md:right-8',
+  'bottom-4 left-4 sm:bottom-6 sm:left-6 md:bottom-8 md:left-8',
+  'bottom-4 right-4 sm:bottom-6 sm:right-6 md:bottom-8 md:right-8',
 ];
 
 export default function Home() {
@@ -49,7 +49,7 @@ export default function Home() {
                 key={color.letter}
                 onClick={() => setSelected(color)}
                 className={cn(
-                  'absolute flex items-center justify-center w-32 h-32 md:w-48 md:h-48 rounded-3xl shadow-xl transform transition-all duration-300 ease-in-out',
+                  'absolute flex items-center justify-center w-28 h-28 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-3xl shadow-xl transform transition-all duration-300 ease-in-out',
                   'hover:scale-110 hover:shadow-2xl hover:z-10 focus:outline-none focus:ring-4 ring-offset-4 ring-offset-background',
                   color.bgColor,
                   color.ringColor,
@@ -57,7 +57,7 @@ export default function Home() {
                 )}
                 aria-label={`Select color ${color.letter}`}
               >
-                <span className={cn('text-7xl md:text-8xl font-black', color.textColor)}>
+                <span className={cn('text-6xl sm:text-7xl md:text-8xl font-black', color.textColor)}>
                   {color.letter}
                 </span>
               </button>
@@ -75,7 +75,7 @@ export default function Home() {
         >
             <span
               className={cn(
-                'font-black text-[25rem] sm:text-[35rem] md:text-[45rem] leading-none select-none animate-in zoom-in-75 duration-700',
+                'font-black text-[20rem] sm:text-[30rem] md:text-[40rem] leading-none select-none animate-in zoom-in-75 duration-700',
                 selected.textColor
               )}
             >
