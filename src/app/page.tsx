@@ -44,21 +44,12 @@ export default function Home() {
         )}
       >
         <div className="relative flex items-center justify-center h-full">
-            <div className="text-center px-4">
-              <h1 className="text-5xl md:text-7xl font-black text-primary tracking-tighter">
-                Color Splash
-              </h1>
-              <p className="mt-4 text-lg md:text-xl text-muted-foreground max-w-md mx-auto">
-                Pick a vibrant corner. See what happens.
-              </p>
-            </div>
-
             {colorsData.map((color, index) => (
               <button
                 key={color.letter}
                 onClick={() => setSelected(color)}
                 className={cn(
-                  'absolute flex items-center justify-center w-28 h-28 md:w-40 md:h-40 rounded-3xl shadow-xl transform transition-all duration-300 ease-in-out',
+                  'absolute flex items-center justify-center w-32 h-32 md:w-48 md:h-48 rounded-3xl shadow-xl transform transition-all duration-300 ease-in-out',
                   'hover:scale-110 hover:shadow-2xl hover:z-10 focus:outline-none focus:ring-4 ring-offset-4 ring-offset-background',
                   color.bgColor,
                   color.ringColor,
@@ -66,7 +57,7 @@ export default function Home() {
                 )}
                 aria-label={`Select color ${color.letter}`}
               >
-                <span className={cn('text-6xl md:text-7xl font-black', color.textColor)}>
+                <span className={cn('text-7xl md:text-8xl font-black', color.textColor)}>
                   {color.letter}
                 </span>
               </button>
