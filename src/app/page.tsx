@@ -21,13 +21,6 @@ const colorsData: ColorInfo[] = [
   { letter: 'D', bgColor: 'bg-blue-500', textColor: 'text-blue-100', ringColor: 'focus:ring-blue-400', backButtonHoverBg: 'hover:bg-blue-100', backButtonHoverText: 'hover:text-blue-500' },
 ];
 
-const cornerClasses = [
-  'top-4 left-4 sm:top-6 sm:left-6 md:top-8 md:left-8',
-  'top-4 right-4 sm:top-6 sm:right-6 md:top-8 md:right-8',
-  'bottom-4 left-4 sm:bottom-6 sm:left-6 md:bottom-8 md:left-8',
-  'bottom-4 right-4 sm:bottom-6 sm:right-6 md:bottom-8 md:right-8',
-];
-
 export default function Home() {
   const [selected, setSelected] = useState<ColorInfo | null>(null);
 
@@ -43,21 +36,20 @@ export default function Home() {
           selected ? 'opacity-0 pointer-events-none scale-95' : 'opacity-100 scale-100'
         )}
       >
-        <div className="relative flex items-center justify-center h-full">
-            {colorsData.map((color, index) => (
+        <div className="relative flex items-center justify-center h-full flex-wrap gap-4 sm:gap-6 md:gap-8 px-4">
+            {colorsData.map((color) => (
               <button
                 key={color.letter}
                 onClick={() => setSelected(color)}
                 className={cn(
-                  'absolute flex items-center justify-center w-28 h-28 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-3xl shadow-xl transform transition-all duration-300 ease-in-out',
-                  'hover:scale-110 hover:shadow-2xl hover:z-10 focus:outline-none focus:ring-4 ring-offset-4 ring-offset-background',
+                  'flex items-center justify-center w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 rounded-3xl shadow-xl transform transition-all duration-300 ease-in-out',
+                  'hover:scale-110 hover:shadow-2xl focus:outline-none focus:ring-4 ring-offset-4 ring-offset-background',
                   color.bgColor,
-                  color.ringColor,
-                  cornerClasses[index]
+                  color.ringColor
                 )}
                 aria-label={`Select color ${color.letter}`}
               >
-                <span className={cn('text-6xl sm:text-7xl md:text-8xl font-black', color.textColor)}>
+                <span className={cn('text-7xl sm:text-8xl md:text-9xl font-black', color.textColor)}>
                   {color.letter}
                 </span>
               </button>
@@ -75,7 +67,7 @@ export default function Home() {
         >
             <span
               className={cn(
-                'font-black text-[20rem] sm:text-[30rem] md:text-[40rem] leading-none select-none animate-in zoom-in-75 duration-700',
+                'font-black text-[18rem] sm:text-[28rem] md:text-[36rem] leading-none select-none animate-in zoom-in-75 duration-700',
                 selected.textColor
               )}
             >
