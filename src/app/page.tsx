@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -17,7 +18,7 @@ type ColorInfo = {
 const colorsData: ColorInfo[] = [
   { letter: 'A', bgColor: 'bg-red-500', textColor: 'text-red-100', ringColor: 'focus:ring-red-400', backButtonHoverBg: 'hover:bg-red-100', backButtonHoverText: 'hover:text-red-500' },
   { letter: 'B', bgColor: 'bg-green-500', textColor: 'text-green-100', ringColor: 'focus:ring-green-400', backButtonHoverBg: 'hover:bg-green-100', backButtonHoverText: 'hover:text-green-500' },
-  { letter: 'C', bgColor: 'bg-yellow-400', textColor: 'text-yellow-900', ringColor: 'focus:ring-yellow-500', backButtonHoverBg: 'hover:bg-yellow-900', backButtonHoverText: 'hover:text-yellow-400' },
+  { letter: 'C', bgColor: 'bg-yellow-400', textColor: 'text-white', ringColor: 'focus:ring-yellow-500', backButtonHoverBg: 'hover:bg-yellow-900', backButtonHoverText: 'hover:text-yellow-400' },
   { letter: 'D', bgColor: 'bg-blue-500', textColor: 'text-blue-100', ringColor: 'focus:ring-blue-400', backButtonHoverBg: 'hover:bg-blue-100', backButtonHoverText: 'hover:text-blue-500' },
 ];
 
@@ -36,24 +37,26 @@ export default function Home() {
           selected ? 'opacity-0 pointer-events-none scale-95' : 'opacity-100 scale-100'
         )}
       >
-        <div className="relative flex items-center justify-center h-full flex-wrap gap-4 sm:gap-6 md:gap-8 px-4">
-            {colorsData.map((color) => (
-              <button
-                key={color.letter}
-                onClick={() => setSelected(color)}
-                className={cn(
-                  'flex items-center justify-center w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 rounded-3xl shadow-xl transform transition-all duration-300 ease-in-out',
-                  'hover:scale-110 hover:shadow-2xl focus:outline-none focus:ring-4 ring-offset-4 ring-offset-background',
-                  color.bgColor,
-                  color.ringColor
-                )}
-                aria-label={`Select color ${color.letter}`}
-              >
-                <span className={cn('text-7xl sm:text-8xl md:text-9xl font-black', color.textColor)}>
-                  {color.letter}
-                </span>
-              </button>
-            ))}
+        <div className="flex items-center justify-center h-full">
+            <div className="grid grid-cols-2 gap-4 sm:gap-6 md:gap-8 px-4">
+                {colorsData.map((color) => (
+                  <button
+                    key={color.letter}
+                    onClick={() => setSelected(color)}
+                    className={cn(
+                      'flex items-center justify-center w-36 h-36 sm:w-44 sm:h-44 md:w-52 md:h-52 rounded-3xl shadow-xl transform transition-all duration-300 ease-in-out',
+                      'hover:scale-110 hover:shadow-2xl focus:outline-none focus:ring-4 ring-offset-4 ring-offset-background',
+                      color.bgColor,
+                      color.ringColor
+                    )}
+                    aria-label={`Select color ${color.letter}`}
+                  >
+                    <span className={cn('text-8xl sm:text-9xl font-black', color.textColor)}>
+                      {color.letter}
+                    </span>
+                  </button>
+                ))}
+            </div>
         </div>
       </div>
       
@@ -67,7 +70,7 @@ export default function Home() {
         >
             <span
               className={cn(
-                'font-black text-[18rem] sm:text-[28rem] md:text-[36rem] leading-none select-none animate-in zoom-in-75 duration-700',
+                'font-black text-[16rem] sm:text-[26rem] md:text-[34rem] leading-none select-none animate-in zoom-in-75 duration-700',
                 selected.textColor
               )}
             >
@@ -84,7 +87,7 @@ export default function Home() {
                 selected.ringColor,
                 selected.backButtonHoverBg,
                 selected.backButtonHoverText,
-                { 'border-yellow-900/50': selected.letter === 'C', 'border-white/50': selected.letter !== 'C' }
+                { 'border-white/50': selected.letter === 'C' || selected.letter !== 'C' }
               )}
               aria-label="Go back to main screen"
           >
