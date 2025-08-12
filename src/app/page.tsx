@@ -37,15 +37,16 @@ export default function Home() {
           selected ? 'opacity-0 pointer-events-none scale-95' : 'opacity-100 scale-100'
         )}
       >
-        <div className="flex items-center justify-center h-full">
-            <div className="grid grid-cols-2 gap-4 sm:gap-6 md:gap-8 px-4">
+        <div className="flex items-center justify-center h-full p-4">
+            <div className="grid grid-cols-2 gap-4 sm:gap-6 md:gap-8 w-full max-w-md">
                 {colorsData.map((color) => (
                   <button
                     key={color.letter}
                     onClick={() => setSelected(color)}
+                    onTouchStart={() => {}} // Improve touch responsiveness
                     className={cn(
                       'flex items-center justify-center w-36 h-36 sm:w-44 sm:h-44 md:w-52 md:h-52 rounded-3xl shadow-xl transform transition-all duration-300 ease-in-out',
-                      'hover:scale-110 hover:shadow-2xl focus:outline-none focus:ring-4 ring-offset-4 ring-offset-background',
+                      'hover:scale-110 active:scale-105 hover:shadow-2xl focus:outline-none focus:ring-4 ring-offset-4 ring-offset-background touch-manipulation',
                       color.bgColor,
                       color.ringColor
                     )}
